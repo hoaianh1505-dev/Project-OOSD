@@ -1,0 +1,8 @@
+vendor/
+.idea/
+.vscode/
+config.php
+*.stackdump
+*.log
+.DS_Store
+thumbs.db
