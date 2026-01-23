@@ -111,4 +111,60 @@ class AuthController
         $_SESSION["email"] = $email;
         $_SESSION["name"] = $name;
     }
+
+    // Xử lý yêu cầu verify token reset password
+    function verifyResetToken()
+    {
+        global $conn;
+        $token = $_GET['token'] ?? '';
+        $cid = (int)($_GET['cid'] ?? 0);
+
+        if (!$token || !$cid) {
+            $_SESSION['error'] = "Liên kết không hợp lệ.";
+            header("location: /");
+            exit;
+        }
+
+        // Kiểm tra token
+        $sql = "SELECT id, token_hash, expires_at, used_at 
+                FROM password_resets 
+                WHERE customer_id = {$cid} 
+                ORDER BY id DESC 
+                LIMIT 1";
+        
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+
+        if (!$row) {
+            $_SESSION['error'] = "Liên kết không hợp lệ.";
+            header("location: /");
+            exit;
+        }
+
+        $now = new DateTime();
+        $exp = new DateTime($row['expires_at']);
+
+        if ($row['used_at'] !== null) {
+            $_SESSION['error'] = "Liên kết này đã được sử dụng.";
+            header("location: /");
+            exit;
+        }
+
+        if ($now > $exp) {
+            $_SESSION['error'] = "Liên kết đã hết hạn. Vui lòng yêu cầu lại.";
+            header("location: /");
+            exit;
+        }
+
+        if (!password_verify($token, $row['token_hash'])) {
+            $_SESSION['error'] = "Liên kết không hợp lệ.";
+            header("location: /");
+            exit;
+        }
+
+        // Token hợp lệ
+        $_SESSION['reset_token_verified'] = true;
+        $_SESSION['reset_cid'] = $cid;
+        $_SESSION['reset_token'] = $token;
+    }
 }
