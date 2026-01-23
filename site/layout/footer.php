@@ -180,15 +180,18 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 class="modal-title text-center">Quên mật khẩu</h3>
             </div>
-            <form action="?c=customer&a=forgotPassword" method="POST" role="form">
+            <form action="forgot_password.php" method="POST" role="form">
                 <div class="modal-body">
                     <div class="form-group">
+                        <label>Nhập email của bạn</label>
                         <input name="email" type="email" class="form-control" placeholder="Email" required>
                     </div>
+                    <p style="font-size: 13px; color: #666;">Chúng tôi sẽ gửi một liên kết để đặt lại mật khẩu của bạn.</p>
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="reference" value="">
-                    <button type="submit" class="btn btn-primary">GỬI</button><br>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-primary">Gửi Liên Kết</button>
                 </div>
             </form>
         </div>
