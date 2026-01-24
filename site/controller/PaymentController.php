@@ -7,7 +7,7 @@ class PaymentController
         if (empty($_SESSION['email'])) {
             $_SESSION['error'] = 'Vui lòng đăng nhập để đặt hàng';
             // điều hướng về trang chủ
-            header('location: /');
+            header('location: index.php');
             exit;
         }
 
@@ -50,7 +50,7 @@ class PaymentController
         if (empty($_SESSION['email'])) {
             $_SESSION['error'] = 'Vui lòng đăng nhập để đặt hàng';
             // điều hướng về trang chủ
-            header('location: /');
+            header('location: index.php');
             exit;
         }
 

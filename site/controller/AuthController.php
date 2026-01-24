@@ -14,7 +14,7 @@ class AuthController
             // nếu hok có thì báo lỗi
             $_SESSION['error'] = "Email $email này không tồn tại trong hệ thống";
             // điều hướng về trang chủ
-            header('location: /');
+            header('location: index.php');
             exit;
         }
         // 2. Kiểm tra đúng mật khẩu hok?
@@ -22,7 +22,7 @@ class AuthController
             // nếu sai mật khẩu
             $_SESSION['error'] = "Sai mật khẩu";
             // điều hướng về trang chủ
-            header('location: /');
+            header('location: index.php');
             exit;
         }
 
@@ -31,13 +31,21 @@ class AuthController
             // nếu chưa được kích hoạt tài khoản
             $_SESSION['error'] = "Tài khoản chưa được kích hoạt, vui lòng vào email để kích hoạt tài khoản";
             // điều hướng về trang chủ
-            header('location: /');
+            header('location: index.php');
             exit;
         }
         // Login thành công
         // Lưu email và tên người dùng vào session
         $_SESSION['email'] = $email;
         $_SESSION['name'] = $customer->getName();
+
+        if (!empty($_SESSION['return_url'])) {
+            $return_url = $_SESSION['return_url'];
+            unset($_SESSION['return_url']);
+            header("location: $return_url");
+            exit;
+        }
+
         // Điều hướng về trang thông tin tài khoản
         header('location: ?c=customer&a=show');
     }
@@ -46,7 +54,7 @@ class AuthController
     {
         // hủy tất cả các session hay nói cách khác $_SESSION trở thành array rỗng không có phần tử nào
         session_destroy();
-        header('location: /');
+        header('location: index.php');
     }
 
     function loginGoogle()
@@ -121,7 +129,7 @@ class AuthController
 
         if (!$token || !$cid) {
             $_SESSION['error'] = "Liên kết không hợp lệ.";
-            header("location: /");
+            header("location: index.php");
             exit;
         }
 
@@ -137,7 +145,7 @@ class AuthController
 
         if (!$row) {
             $_SESSION['error'] = "Liên kết không hợp lệ.";
-            header("location: /");
+            header("location: index.php");
             exit;
         }
 
@@ -146,19 +154,19 @@ class AuthController
 
         if ($row['used_at'] !== null) {
             $_SESSION['error'] = "Liên kết này đã được sử dụng.";
-            header("location: /");
+            header("location: index.php");
             exit;
         }
 
         if ($now > $exp) {
             $_SESSION['error'] = "Liên kết đã hết hạn. Vui lòng yêu cầu lại.";
-            header("location: /");
+            header("location: index.php");
             exit;
         }
 
         if (!password_verify($token, $row['token_hash'])) {
             $_SESSION['error'] = "Liên kết không hợp lệ.";
-            header("location: /");
+            header("location: index.php");
             exit;
         }
 
