@@ -33,7 +33,7 @@
         <div class="top-navbar container-fluid">
             <div class="menu-mb">
                 <a href="javascript:void(0)" class="btn-close" onclick="closeMenuMobile()">×</a>
-                <a class="<?= $c == 'home' ? 'active' : '' ?>" href="/">Trang chủ</a>
+                <a class="<?= $c == 'home' ? 'active' : '' ?>" href="index.php">Trang chủ</a>
                 <a class="<?= $c == 'product' ? 'active' : '' ?>" href="?c=product">Sản phẩm</a>
                 <a class="<?= $a == 'return' ? 'active' : '' ?>" href="?c=policy&a=return">Chính sách đổi trả</a>
                 <a class="<?= $a == 'payment' ? 'active' : '' ?>" href="?c=policy&a=payment">Chính sách thanh toán</a>
@@ -93,10 +93,10 @@
             <div class="row">
                 <!-- LOGO -->
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 logo">
-                    <a href="#"><img src="../upload/thebloomstudio450x170.jpg" class="img-responsive"></a>
+                    <a href="index.php"><img src="../upload/thebloomstudio450x170.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-lg-4 col-md-4 hidden-sm hidden-xs call-action">
-                    <a href="#"><img src="../upload/flower_workers_450x170.jpg" class="img-responsive"></a>
+                    <a href="index.php"><img src="../upload/flower_workers_450x170.jpg" class="img-responsive"></a>
                 </div>
                 <!-- HOTLINE AND SERCH -->
                 <div class="col-lg-4 col-md-4 hotline-search">
@@ -132,7 +132,7 @@
         <div class="container">
             <ul class="nav navbar-nav navbar-left hidden-sm hidden-xs">
                 <li class="<?= $c == 'home' ? 'active' : '' ?>">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                 </li>
                 <li class="<?= $c == 'product' ? 'active' : '' ?>"><a href="?c=product">Sản phẩm </a></li>
                 <li class="<?= $a == 'return' ? 'active' : '' ?>"><a href="?c=policy&a=return">Chính sách đổi trả</a>

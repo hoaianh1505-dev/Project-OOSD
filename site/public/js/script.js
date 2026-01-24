@@ -204,6 +204,11 @@ $(function () {
       url: "?c=cart&a=add",
       data: { product_id: product_id, qty: qty },
       success: function (response) {
+        if (response === 'NOT_LOGGED_IN') {
+             alert('Vui lòng đăng nhập để mua hàng');
+             $("#modal-login").modal("show");
+             return;
+        }
         // code này chỉ chạy khi server thực thi request thành công
         // Dữ liệu trên server sẽ gởi về trình duyệt và nằm trong biến response
         displayCart();
@@ -220,6 +225,11 @@ $(function () {
       url: "?c=cart&a=add",
       data: { product_id: product_id, qty: 1 },
       success: function (response) {
+        if (response === 'NOT_LOGGED_IN') {
+             alert('Vui lòng đăng nhập để mua hàng');
+             $("#modal-login").modal("show");
+             return;
+        }
         // code này chỉ chạy khi server thực thi request thành công
         // Dữ liệu trên server sẽ gởi về trình duyệt và nằm trong biến response
         displayCart();

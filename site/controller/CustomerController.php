@@ -10,7 +10,8 @@ class CustomerController
         if (empty($_SESSION['email'])) {
             //chưa login 
             $_SESSION['error'] = 'Bạn phải login mới có quyền truy cập';
-            header('location: /');
+            $_SESSION['return_url'] = $_SERVER['REQUEST_URI'];
+            header('location: index.php');
             exit;
         }
     }
@@ -156,27 +157,27 @@ class CustomerController
     function register()
     {
         $secret = GOOGLE_RECAPTCHA_SECRET;
-        $recaptcha = new \ReCaptcha\ReCaptcha($secret);
-        $hostname = get_host_name();
-        $remoteIp = '127.0.0.1';
-        $gRecaptchaResponse = $_POST['g-recaptcha-response'];
-        $resp = $recaptcha->setExpectedHostname($hostname)
-            ->verify($gRecaptchaResponse, $remoteIp);
-        if (!$resp->isSuccess()) {
-            $errors = $resp->getErrorCodes();
-            //Chuyển array 2 phần tử thành chuỗi để hiển thị trên website 
-            $error = implode($errors, '<br>');
-            $_SESSION['error'] = $error;
-            header('location: /');
-            exit;
-        }
+        // $recaptcha = new \ReCaptcha\ReCaptcha($secret);
+        // $hostname = get_host_name();
+        // $remoteIp = '127.0.0.1';
+        // $gRecaptchaResponse = $_POST['g-recaptcha-response'];
+        // $resp = $recaptcha->setExpectedHostname($hostname)
+        //     ->verify($gRecaptchaResponse, $remoteIp);
+        // if (!$resp->isSuccess()) {
+        //     $errors = $resp->getErrorCodes();
+        //     //Chuyển array 2 phần tử thành chuỗi để hiển thị trên website 
+        //     $error = implode($errors, '<br>');
+        //     $_SESSION['error'] = $error;
+        //     header('location: index.php');
+        //     exit;
+        // }
         // var_dump($_POST);
         $email = $_POST['email'];
         $customerRepository = new CustomerRepository();
         $customer = $customerRepository->findEmail($email);
         if ($customer) {
             $_SESSION['error'] = 'Email đã tồn tại, vui lòng nhập email khác';
-            header('location: /');
+            header('location: index.php');
             exit;
         }
 
@@ -198,7 +199,7 @@ class CustomerController
         if (!$customerRepository->save($data)) {
             // lưu thất bại
             $_SESSION['error'] = $customerRepository->getError();
-            header('location: /');
+            header('location: index.php');
             exit;
         }
         // Tạo account thành công
@@ -270,7 +271,7 @@ class CustomerController
         if (!$customerRepository->update($customer)) {
             // lưu thất bại
             $_SESSION['error'] = $customerRepository->getError();
-            header('location: /');
+            header('location: index.php');
             exit;
         }
 
@@ -286,7 +287,7 @@ class CustomerController
         $customer = $customerRepository->findEmail($email);
         if (empty($customer)) {
             $_SESSION['error'] = "Email $email không tồn tại.";
-            header('location: /');
+            header('location: index.php');
             exit;
         }
         $emailService = new EmailService();
@@ -343,7 +344,7 @@ class CustomerController
         if (!$customerRepository->update($customer)) {
             // lưu thất bại
             $_SESSION['error'] = $customerRepository->getError();
-            header('location: /');
+            header('location: index.php');
             exit;
         }
 
