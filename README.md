@@ -13,7 +13,7 @@ Sử dụng website thương mại điện tử này để đặt hoa. Dự án 
 
 ### Cài đặt
 
-1.  **Clone repository:**
+1. **Clone repository:**
     ```bash
     git clone https://github.com/your-username/thebloomstudio.git
     cd thebloomstudio
