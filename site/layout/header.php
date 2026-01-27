@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="public/vendor/star-rating/css/star-rating.min.css">
     <link rel="stylesheet" href="public/css/base.css">
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/header-new.css">
 
     <script src="public/vendor/jquery.min.js"></script>
     <script src="public/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -96,7 +97,7 @@
                     <a href="index.php"><img src="../upload/thebloomstudio450x170.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-lg-4 col-md-4 hidden-sm hidden-xs call-action">
-                    <a href="index.php"><img src="../upload/flower_workers_450x170.jpg" class="img-responsive"></a>
+                    <a href="index.php"><img src="" class="img-responsive"></a>
                 </div>
                 <!-- HOTLINE AND SERCH -->
                 <div class="col-lg-4 col-md-4 hotline-search">

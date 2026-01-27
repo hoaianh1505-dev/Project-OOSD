@@ -1,0 +1,400 @@
+/* ========================================
+   HEADER REDESIGN - THE BLOOM STUDIO
+   Clean & Harmonious Design
+   ======================================== */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+/* CSS Variables - Shopee Orange Theme */
+:root {
+    --primary: #ee4d2d;
+    --primary-light: #fff0ed;
+    --primary-dark: #d73211;
+    --dark: #2c2c2c;
+    --gray: #666;
+    --light-gray: #f5f5f5;
+    --border: #e8e8e8;
+    --white: #fff;
+}
+
+/* ========== TOP NAVBAR ========== */
+header .top-navbar {
+    background: var(--primary-light);
+    border: none;
+    border-bottom: 1px solid var(--border);
+    min-height: 44px;
+    padding: 6px 0;
+}
+
+header .top-navbar .row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .top-navbar ul.list-inline {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header .top-navbar ul li a {
+    color: var(--dark);
+    font-size: 13px;
+    padding: 0 6px;
+    line-height: 1;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+header .top-navbar ul li a:hover {
+    color: var(--primary);
+    opacity: 1;
+}
+
+/* Social Icons */
+header .top-navbar .list-inline li a i.fab {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--primary);
+    font-size: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .top-navbar .list-inline li a:hover i.fab {
+    background: var(--primary);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(238, 77, 45, 0.3);
+}
+
+/* Login/Register Buttons */
+header .top-navbar .btn-login,
+header .top-navbar .btn-register {
+    font-weight: 600;
+    padding: 6px 18px !important;
+    border-radius: 20px;
+    background: var(--white);
+    margin-left: 10px;
+    font-size: 12px;
+    border: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+header .top-navbar .btn-login:hover,
+header .top-navbar .btn-register:hover {
+    background: var(--primary);
+    color: var(--white) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 77, 45, 0.3);
+}
+
+header .top-navbar .btn-register {
+    background: var(--primary);
+    color: var(--white) !important;
+}
+
+header .top-navbar .btn-register:hover {
+    background: var(--primary-dark);
+}
+
+/* Đơn hàng của tôi Button */
+header .top-navbar .btn-logout {
+    font-weight: 600;
+    padding: 6px 18px !important;
+    border-radius: 20px;
+    background: var(--primary);
+    color: var(--white) !important;
+    margin-left: 8px;
+    font-size: 12px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+header .top-navbar .btn-logout:hover {
+    background: var(--primary-dark);
+    color: var(--white) !important;
+}
+
+/* Username/Account Button */
+header .top-navbar .btn-account {
+    font-weight: 600;
+    padding: 6px 16px !important;
+    border-radius: 20px;
+    background: var(--white);
+    color: var(--primary) !important;
+    margin-left: 8px;
+    font-size: 12px;
+    border: 2px solid var(--primary);
+    transition: all 0.2s ease;
+}
+
+header .top-navbar .btn-account:hover {
+    background: var(--primary);
+    color: var(--white) !important;
+}
+
+/* Dropdown Menu */
+header .top-navbar .dropdown-menu {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    margin-top: 5px;
+}
+
+header .top-navbar .dropdown-menu li a {
+    padding: 8px 20px !important;
+    font-size: 13px;
+    line-height: 1.5 !important;
+}
+
+header .top-navbar .dropdown-menu li a:hover {
+    background: var(--primary-light);
+    color: var(--primary) !important;
+}
+
+/* ========== MAIN HEADER ========== */
+header .container {
+    padding: 15px;
+    background: var(--white);
+}
+
+header .logo {
+    padding: 10px 0;
+}
+
+header .logo a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+header .logo a:hover {
+    transform: scale(1.02);
+}
+
+header .logo img {
+    max-height: 80px;
+    width: auto;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+header .logo img:hover {
+    box-shadow: 0 5px 20px rgba(238, 77, 45, 0.15);
+}
+
+/* Hotline Section */
+header .hotline-search {
+    margin-top: 10px;
+}
+
+header .hotline-phone {
+    font-size: 15px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+header .hotline-phone strong {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+header .hotline-phone a {
+    color: var(--primary);
+}
+
+header .hotline-email {
+    font-size: 12px;
+    color: var(--gray);
+    font-style: normal;
+}
+
+header .hotline-email a {
+    color: var(--gray);
+}
+
+header .hotline-email a:hover {
+    color: var(--primary);
+}
+
+/* Search Box */
+header form.header-form {
+    margin-top: 15px;
+}
+
+header form .search {
+    height: 40px;
+    border: 1px solid var(--border);
+    border-right: none;
+    border-radius: 20px 0 0 20px;
+    background: var(--light-gray);
+    padding-left: 18px;
+    font-size: 13px;
+}
+
+header form .search:focus {
+    border-color: var(--primary);
+    background: var(--white);
+    outline: none;
+    box-shadow: none;
+}
+
+header form .bt-search {
+    height: 40px;
+    width: 45px;
+    background: var(--primary);
+    border: none;
+    border-radius: 0 20px 20px 0;
+    transition: background 0.2s ease;
+}
+
+header form .bt-search:hover {
+    background: var(--primary-dark);
+}
+
+header form .bt-search i {
+    color: var(--white) !important;
+    font-size: 14px;
+}
+
+/* ========== NAVIGATION BAR ========== */
+nav.desktop-menu {
+    background: var(--primary);
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+    min-height: 45px;
+}
+
+nav.desktop-menu .navbar-nav>li>a {
+    color: var(--white);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 12px 16px;
+    transition: background 0.2s ease;
+}
+
+nav.desktop-menu .navbar-nav>li>a:hover,
+nav.desktop-menu .navbar-nav>li.active>a {
+    background: var(--primary-dark);
+    color: var(--white);
+}
+
+nav.desktop-menu .navbar-nav>li>a:focus {
+    background: transparent;
+}
+
+/* Cart Button */
+nav.desktop-menu .navbar-right li {
+    background: transparent;
+}
+
+nav.desktop-menu .navbar-nav>li.cart>a.btn-cart-detail {
+    background: var(--white);
+    color: var(--primary) !important;
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 5px 15px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+nav.desktop-menu .navbar-nav>li.cart>a.btn-cart-detail i {
+    font-size: 16px;
+}
+
+nav.desktop-menu .navbar-nav>li.cart>a.btn-cart-detail:hover {
+    background: var(--primary-dark);
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(238, 77, 45, 0.3);
+}
+
+nav.desktop-menu .number-total-product {
+    background: #ef4444;
+    color: var(--white);
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+}
+
+nav.desktop-menu .experience {
+    color: var(--white);
+}
+
+/* Mobile Menu */
+header .menu-mb {
+    background-color: var(--dark);
+}
+
+header .menu-mb a {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    color: var(--white);
+}
+
+header .menu-mb .active,
+header .menu-mb a:hover {
+    color: var(--primary-light);
+}
+
+header .btn-menu-mb {
+    color: var(--primary);
+    font-size: 20px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 991px) {
+    header .logo {
+        text-align: center;
+    }
+
+    header .hotline-search {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    header .hotline-phone,
+    header .hotline-email {
+        text-align: center;
+    }
+
+    nav.desktop-menu {
+        min-height: auto;
+        padding: 5px 0;
+    }
+
+    nav.desktop-menu .navbar-nav>li.cart>a.btn-cart-detail {
+        margin: 3px 5px;
+        padding: 6px 12px;
+    }
+}
