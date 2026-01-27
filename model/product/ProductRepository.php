@@ -7,7 +7,7 @@ class ProductRepository extends BaseRepository
 		global $conn;
 		$products = array();
 
-		$sql = "SELECT * FROM view_product";
+		$sql = "SELECT *, ROUND(IF(discount_percentage IS NULL || discount_from_date > CURRENT_DATE || discount_to_date < CURRENT_DATE , price, price * (1-discount_percentage/100)), -3) AS sale_price FROM product";
 		if ($condition) {
 			$sql .= " WHERE $condition"; //SELECT * FROM view_product WHERE name LIKE '%abc%'  AND create_date='2020-08-07'
 		}
@@ -57,7 +57,7 @@ class ProductRepository extends BaseRepository
 		global $conn;
 		$products = array();
 
-		$sql = "SELECT count(*) AS number FROM view_product";
+		$sql = "SELECT count(*) AS number FROM product";
 		if ($condition) {
 			$sql .= " WHERE $condition"; //SELECT * FROM view_product WHERE name LIKE '%abc%'  AND create_date='2020-08-07'
 		}
