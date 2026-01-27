@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="public/vendor/star-rating/css/star-rating.min.css">
     <link rel="stylesheet" href="public/css/base.css">
     <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/header-new.css">
+    <link rel="stylesheet" href="public/css/header-new.css?v=3">
 
     <script src="public/vendor/jquery.min.js"></script>
     <script src="public/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="public/vendor/format/number_format.js"></script>
     <script src="public/vendor/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="public/js/script.js"></script>
+    <script type="text/javascript" src="public/js/script.js?v=4"></script>
 </head>
 <?php global $c, $a; ?>
 

@@ -205,9 +205,8 @@ $(function () {
       data: { product_id: product_id, qty: qty },
       success: function (response) {
         if (response === 'NOT_LOGGED_IN') {
-             alert('Vui lòng đăng nhập để mua hàng');
-             $("#modal-login").modal("show");
-             return;
+          showLoginRequired();
+          return;
         }
         // code này chỉ chạy khi server thực thi request thành công
         // Dữ liệu trên server sẽ gởi về trình duyệt và nằm trong biến response
@@ -225,10 +224,10 @@ $(function () {
       url: "?c=cart&a=add",
       data: { product_id: product_id, qty: 1 },
       success: function (response) {
-        if (response === 'NOT_LOGGED_IN') {
-             alert('Vui lòng đăng nhập để mua hàng');
-             $("#modal-login").modal("show");
-             return;
+        console.log('Response:', response, '|Length:', response.length);
+        if (response.trim() === 'NOT_LOGGED_IN') {
+          showLoginRequired();
+          return;
         }
         // code này chỉ chạy khi server thực thi request thành công
         // Dữ liệu trên server sẽ gởi về trình duyệt và nằm trong biến response
@@ -453,9 +452,16 @@ $(function () {
     window.location.href = `?c=product&price-range=${priceRange}`;
   });
 
-  $(".product-container").hover(function () {
-    $(this).children(".button-product-action").toggle(400);
-  });
+  $(".product-container").hover(
+    function () {
+      // Mouse enter - show buttons
+      $(this).children(".button-product-action").stop(true, true).slideDown(300);
+    },
+    function () {
+      // Mouse leave - hide buttons
+      $(this).children(".button-product-action").stop(true, true).slideUp(300);
+    }
+  );
 
   // Display or hidden button back to top
   $(window).scroll(function () {
@@ -632,26 +638,23 @@ function displayCart() {
                     <div class="clearfix text-left">
                         <div class="row">
                             <div class="col-sm-6 col-md-1">
-                                <div><img class="img-responsive" src="../upload/${
-                                  item.img
-                                }" alt="${item.name} "></div>
+                                <div><img class="img-responsive" src="../upload/${item.img
+      }" alt="${item.name} "></div>
                             </div>
                             <div class="col-sm-6 col-md-3"><a class="product-name" href="#">${item.name.replace(
-                              /\+/g,
-                              " "
-                            )}</a></div>
+        /\+/g,
+        " "
+      )}</a></div>
                             <div class="col-sm-6 col-md-2"><span class="product-item-discount">${formatMoney(
-                              item.unit_price
-                            )}₫</span></div>
-                            <div class="col-sm-6 col-md-3"><input type="number" onchange="updateProductInCart(this,${
-                              item.product_id
-                            })" min="1" value="${item.qty}"></div>
+        item.unit_price
+      )}₫</span></div>
+                            <div class="col-sm-6 col-md-3"><input type="number" onchange="updateProductInCart(this,${item.product_id
+      })" min="1" value="${item.qty}"></div>
                             <div class="col-sm-6 col-md-2"><span>${formatMoney(
-                              item.total_price
-                            )}₫</span></div>
-                            <div class="col-sm-6 col-md-1"><a class="remove-product" href="javascript:void(0)" onclick="deleteProductInCart(${
-                              item.product_id
-                            })"><span class="glyphicon glyphicon-trash"></span></a></div>
+        item.total_price
+      )}₫</span></div>
+                            <div class="col-sm-6 col-md-1"><a class="remove-product" href="javascript:void(0)" onclick="deleteProductInCart(${item.product_id
+      })"><span class="glyphicon glyphicon-trash"></span></a></div>
                         </div>
                     </div>`;
     rows += row;
@@ -721,4 +724,62 @@ function updateSelectBox(selector, data) {
     // thêm vào cuối thẻ select
     $(selector).append(option);
   }
+}
+
+// Show Login Required Popup - Centered Modal
+function showLoginRequired() {
+  // Remove existing popup if any
+  $('.login-required-overlay').remove();
+
+  // Create popup HTML
+  const popupHtml = `
+    <div class="login-required-overlay">
+      <div class="login-required-popup">
+        <div class="popup-icon">
+          <i class="fa fa-user-lock"></i>
+        </div>
+        <h3>Vui lòng đăng nhập</h3>
+        <p>Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng</p>
+        <div class="popup-buttons">
+          <button class="btn-popup-login">Đăng nhập ngay</button>
+          <button class="btn-popup-close">Để sau</button>
+        </div>
+      </div>
+    </div>
+  `;
+
+  // Append to body
+  $('body').append(popupHtml);
+
+  // Show with animation
+  setTimeout(function () {
+    $('.login-required-overlay').addClass('show');
+  }, 10);
+
+  // Handle login button click
+  $('.btn-popup-login').click(function () {
+    $('.login-required-overlay').removeClass('show');
+    setTimeout(function () {
+      $('.login-required-overlay').remove();
+      $("#modal-login").modal("show");
+    }, 300);
+  });
+
+  // Handle close button click
+  $('.btn-popup-close').click(function () {
+    $('.login-required-overlay').removeClass('show');
+    setTimeout(function () {
+      $('.login-required-overlay').remove();
+    }, 300);
+  });
+
+  // Close on overlay click
+  $('.login-required-overlay').click(function (e) {
+    if (e.target === this) {
+      $(this).removeClass('show');
+      setTimeout(function () {
+        $('.login-required-overlay').remove();
+      }, 300);
+    }
+  });
 }
