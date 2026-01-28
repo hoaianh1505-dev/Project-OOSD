@@ -4,7 +4,7 @@ class ProductRepository extends BaseRepository
 
 	protected function fetchAll($condition = null, $sort = null, $limit = null)
 	{
-		global $conn;
+		// global $conn;
 		$products = array();
 
 		$sql = "SELECT *, ROUND(IF(discount_percentage IS NULL || discount_from_date > CURRENT_DATE || discount_to_date < CURRENT_DATE , price, price * (1-discount_percentage/100)), -3) AS sale_price FROM product";
@@ -22,7 +22,7 @@ class ProductRepository extends BaseRepository
 			//SELECT * FROM view_product WHERE name LIKE '%abc%'  AND create_date='2020-08-07' ORDER BY name asc, created_date desc LIMIT 20, 10
 		}
 		// echo $sql;
-		$result = $conn->query($sql);
+		$result = $this->conn->query($sql);
 
 		if ($result->num_rows > 0) {
 			while ($row = $result->fetch_assoc()) {
@@ -54,7 +54,7 @@ class ProductRepository extends BaseRepository
 
 	protected function fetchAllNumber($condition = null, $sort = null, $limit = null)
 	{
-		global $conn;
+		// global $conn;
 		$products = array();
 
 		$sql = "SELECT count(*) AS number FROM product";
@@ -72,7 +72,7 @@ class ProductRepository extends BaseRepository
 			//SELECT * FROM view_product WHERE name LIKE '%abc%'  AND create_date='2020-08-07' ORDER BY name asc, created_date desc LIMIT 20, 10
 		}
 		// echo $sql;
-		$result = $conn->query($sql);
+		$result = $this->conn->query($sql);
 		$row = $result->fetch_assoc();
 		$number = $row['number'];
 		
@@ -198,7 +198,7 @@ class ProductRepository extends BaseRepository
 
 	function find($id)
 	{
-		global $conn;
+		// global $conn;
 		$condition = "id = $id";
 		$products = $this->fetchAll($condition);
 		$product = current($products);
@@ -207,7 +207,7 @@ class ProductRepository extends BaseRepository
 
 	function findByBarcode($barcode)
 	{
-		global $conn;
+		// global $conn;
 		$condition = "barcode = '$barcode'";
 		$products = $this->fetchAll($condition);
 		$product = current($products);
@@ -216,7 +216,7 @@ class ProductRepository extends BaseRepository
 
 	function save($data)
 	{
-		global $conn;
+		// global $conn;
 		$name = $data["name"];
 		$barcode = $data["barcode"];
 		$sku = $data["sku"];
@@ -235,18 +235,17 @@ class ProductRepository extends BaseRepository
 		price, discount_percentage, discount_from_date, discount_to_date, featured_image, inventory_qty, created_date,
 		description, featured, category_id, brand_id) 
 		VALUES ('$name', '$barcode', '$sku' ,$price, '$discount_percentage', '$discount_from_date', '$discount_to_date',  '$featured_image', '$inventory_qty', '$created_date', '$description', '$featured', $category_id, $brand_id)";
-		if ($conn->query($sql) === TRUE) {
-			$last_id = $conn->insert_id; //chỉ cho auto increment
+		if ($this->conn->query($sql) === TRUE) {
+			$last_id = $this->conn->insert_id; //chỉ cho auto increment
 			return $last_id;
 		}
-		$this->error =  "Error: " . $sql . PHP_EOL . $conn->error;
+		$this->error =  "Error: " . $sql . PHP_EOL . $this->conn->error;
 		return false;
 	}
 
 	function update(Product $product)
 	{
-		global $conn;
-
+		// global $conn;
 		$id = $product->getId();
 		$name = $product->getName();
 		$sku = $product->getSku();
@@ -281,22 +280,22 @@ class ProductRepository extends BaseRepository
 			brand_id=$brand_id
 			WHERE id=$id";
 
-		if ($conn->query($sql) === TRUE) {
+		if ($this->conn->query($sql) === TRUE) {
 			return true;
 		}
-		$this->error =  "Error: " . $sql . PHP_EOL . $conn->error;
+		$this->error =  "Error: " . $sql . PHP_EOL . $this->conn->error;
 		return false;
 	}
 
 	function delete(Product $product)
 	{
-		global $conn;
+		// global $conn;
 		$id = $product->getId();
 		$sql = "DELETE FROM product WHERE id=$id";
-		if ($conn->query($sql) === TRUE) {
+		if ($this->conn->query($sql) === TRUE) {
 			return true;
 		}
-		$this->error =  "Error: " . $sql . PHP_EOL . $conn->error;
+		$this->error =  "Error: " . $sql . PHP_EOL . $this->conn->error;
 		return false;
 	}
 
