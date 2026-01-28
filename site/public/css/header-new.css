@@ -25,6 +25,9 @@ header .top-navbar {
     border-bottom: 1px solid #eee;
     min-height: 48px;
     padding: 8px 0;
+    position: relative;
+    z-index: 2000;
+    /* High z-index to stay above everything */
 }
 
 header .top-navbar .row {
@@ -163,28 +166,65 @@ header .top-navbar .btn-account:hover::before {
 }
 
 /* Dropdown Menu */
+/* Dropdown Menu - New Design */
 header .top-navbar .dropdown-menu {
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 5px 0;
-    margin-top: 8px;
-    min-width: 180px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    margin-top: 12px;
+    min-width: 200px;
+    z-index: 2100 !important;
+    /* Extremely high to cover nav bar */
+}
+
+/* Arrow for dropdown */
+header .top-navbar .dropdown-menu::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 header .top-navbar .dropdown-menu li a {
-    padding: 10px 18px !important;
-    font-size: 13px;
+    padding: 10px 20px !important;
+    font-size: 14px;
     line-height: 1.5 !important;
-    color: var(--dark);
+    color: #4a4a4a;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+header .top-navbar .dropdown-menu li a i {
+    width: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 15px;
+    transition: all 0.2s ease;
 }
 
 header .top-navbar .dropdown-menu li a:hover {
-    background: var(--primary-light);
-    color: var(--primary) !important;
+    background: #fff5f5;
+    color: #ee4d2d !important;
+    padding-left: 25px !important;
+    /* Slide animation */
+}
+
+header .top-navbar .dropdown-menu li a:hover i {
+    color: #ee4d2d;
+}
+
+header .top-navbar .dropdown-menu .divider {
+    margin: 6px 0;
+    background-color: #f1f1f1;
 }
 
 /* ========== MAIN HEADER ========== */
