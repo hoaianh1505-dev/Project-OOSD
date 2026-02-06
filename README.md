@@ -1,5 +1,5 @@
 # The Bloom Studio
-
+y9GV3dYEOsdvc
 Sử dụng website thương mại điện tử này để đặt hoa. Dự án này được xây dựng bằng PHP và MySQL.
 
 ## Bắt đầu
@@ -13,7 +13,7 @@ Sử dụng website thương mại điện tử này để đặt hoa. Dự án 
 
 ### Cài đặt
 
-1.  **Clone repository:**
+1. **Clone repository:**
     ```bash
     git clone https://github.com/your-username/thebloomstudio.git
     cd thebloomstudio

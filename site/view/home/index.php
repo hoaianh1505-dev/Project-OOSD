@@ -12,15 +12,15 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="../upload/slider1.jpg" alt="slider 1">
+                    <img src="../upload/slider_2.jpg" alt="slider 1">
                 </div>
 
                 <div class="item">
-                    <img src="../upload/slider_2.jpg" alt="slider 2">
+                    <img src="../upload/slider_3.jpg" alt="slider 2">
                 </div>
 
                 <div class="item">
-                    <img src="../upload/slider_3.jpg" alt="slider 3">
+                    <img src="../upload/slider_1.jpg" alt="slider 3">
                 </div>
             </div>
 
