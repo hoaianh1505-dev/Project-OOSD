@@ -122,6 +122,9 @@ class Order {
 	}
 
 	function setShippingFee($shipping_fee) {
+		if ($shipping_fee < 0) {
+			throw new Exception("Phí vận chuyển không thể âm!");
+		}
 		$this->shipping_fee = $shipping_fee;
 		return $this;
 	}

@@ -78,16 +78,25 @@ class Customer
 	}
 
 	function setPassword($password) {
+		if (strlen($password) < 6) {
+			throw new Exception("Mật khẩu phải có ít nhất 6 ký tự!");
+		}
 		$this->password = $password;
 		return $this;
 	}
 
 	function setMobile($mobile) {
+		if (!preg_match('/^[0-9]{10,12}$/', $mobile)) {
+			throw new Exception("Số điện thoại không hợp lệ!");
+		}
 		$this->mobile = $mobile;
 		return $this;
 	}
 
 	function setEmail($email) {
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			throw new Exception("Email không hợp lệ: $email");
+		}
 		$this->email = $email;
 		return $this;
 	}

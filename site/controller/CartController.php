@@ -5,6 +5,12 @@ class CartController
     {
         $product_id = $_GET['product_id'];
         $qty = $_GET['qty'];
+
+        if (empty($_SESSION['email'])) {
+            echo 'NOT_LOGGED_IN';
+            exit;
+        }
+
         // lần đầu tiên mua hàng, hoặc giỏ hàng hết hạn
         if (empty($_COOKIE['cart'])) {
             // giỏ hàng mới hoàn toàn, hok có gì trong đó

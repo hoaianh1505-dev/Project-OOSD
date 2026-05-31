@@ -21,7 +21,7 @@
 
 <body id="page-top">
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-        <a class="navbar-brand mr-1" href="index.html">The bloom studio </a>
+        <a class="navbar-brand mr-1" href="index.php">The bloom studio </a>
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button>
@@ -36,8 +36,8 @@
     </nav>
     <div id="wrapper">
         <?php
-      global $c, $a;
-      ?>
+        global $c, $a;
+        ?>
         <!-- Sidebar -->
         <ul class="sidebar navbar-nav">
             <li class="nav-item <?= $c == "dashboard" ? "active" : "" ?>">
@@ -164,12 +164,12 @@
             style="position: absolute; left:50%; transform: translateX(-50%);width:100%">
             <?= !empty($_SESSION["message"]) ? $_SESSION["message"] : "" ?></div>
         <?php
-      unset($_SESSION["message"]);
-      ?>
+        unset($_SESSION["message"]);
+        ?>
 
         <div class="error bg-danger text-center"
             style="position: absolute; left:50%; transform: translateX(-50%);width:100%; color:white">
             <?= !empty($_SESSION["error"]) ? $_SESSION["error"] : "" ?></div>
         <?php
-      unset($_SESSION["error"]);
-      ?>
+        unset($_SESSION["error"]);
+        ?>

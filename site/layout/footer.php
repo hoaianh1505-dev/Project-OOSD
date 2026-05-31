@@ -98,10 +98,10 @@
                         <input type="password" class="form-control" name="password_confirmation"
                             placeholder="Nhập lại mật khẩu">
                     </div>
-                    <div class="form-group g-recaptcha" data-sitekey="<?= GOOGLE_RECAPTCHA_SITE ?>" name>
+                    <!-- <div class="form-group g-recaptcha" data-sitekey="<?= GOOGLE_RECAPTCHA_SITE ?>" name>
                     </div>
                     <input type="text" name="hiddenRecaptcha"
-                        style="opacity: 0; position: absolute; top: 0; left: 0; height: 1px; width: 1px;">
+                        style="opacity: 0; position: absolute; top: 0; left: 0; height: 1px; width: 1px;"> -->
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>

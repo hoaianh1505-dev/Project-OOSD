@@ -22,7 +22,7 @@ class EmailService {
             $mail->addAddress($to);     //Add a recipient
             
 
-            //Content
+            //Contenta
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = $subject;
             $mail->Body    = $content;

@@ -1,5 +1,21 @@
 <aside class="col-md-3">
     <div class="inner-aside">
+        <!-- Search Box -->
+        <div class="sidebar-search">
+            <h5>Tìm kiếm</h5>
+            <form action="" method="GET">
+                <div class="input-group">
+                    <input type="search" class="form-control" placeholder="Nhập tên sản phẩm..." 
+                           name="search" autocomplete="off" value="<?= $search ?? '' ?>">
+                    <div class="input-group-btn">
+                        <button class="btn btn-search-sidebar" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <input type="hidden" name="c" value="product">
+            </form>
+        </div>
         <div class="category">
             <h5>Danh mục sản phẩm</h5>
             <ul>

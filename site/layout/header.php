@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="public/vendor/star-rating/css/star-rating.min.css">
     <link rel="stylesheet" href="public/css/base.css">
     <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/header-new.css?v=20">
 
     <script src="public/vendor/jquery.min.js"></script>
     <script src="public/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
@@ -21,7 +22,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="public/vendor/format/number_format.js"></script>
     <script src="public/vendor/jquery-validation-1.19.3/dist/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="public/js/script.js"></script>
+    <script type="text/javascript" src="public/js/script.js?v=5"></script>
 </head>
 <?php global $c, $a; ?>
 
@@ -33,7 +34,7 @@
         <div class="top-navbar container-fluid">
             <div class="menu-mb">
                 <a href="javascript:void(0)" class="btn-close" onclick="closeMenuMobile()">×</a>
-                <a class="<?= $c == 'home' ? 'active' : '' ?>" href="/">Trang chủ</a>
+                <a class="<?= $c == 'home' ? 'active' : '' ?>" href="index.php">Trang chủ</a>
                 <a class="<?= $c == 'product' ? 'active' : '' ?>" href="?c=product">Sản phẩm</a>
                 <a class="<?= $a == 'return' ? 'active' : '' ?>" href="?c=policy&a=return">Chính sách đổi trả</a>
                 <a class="<?= $a == 'payment' ? 'active' : '' ?>" href="?c=policy&a=payment">Chính sách thanh toán</a>
@@ -93,10 +94,23 @@
             <div class="row">
                 <!-- LOGO -->
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 logo">
-                    <a href="#"><img src="../upload/thebloomstudio450x170.jpg" class="img-responsive"></a>
+                    <a href="index.php"><img src="../upload/thebloomstudio450x170.jpg" class="img-responsive"></a>
                 </div>
                 <div class="col-lg-4 col-md-4 hidden-sm hidden-xs call-action">
-                    <a href="#"><img src="../upload/flower_workers_450x170.jpg" class="img-responsive"></a>
+                    <div class="header-features">
+                        <div class="feature-item">
+                            <i class="fas fa-truck"></i>
+                            <span>Giao hàng 2H</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>Hoa tươi 100%</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Đổi trả dễ dàng</span>
+                        </div>
+                    </div>
                 </div>
                 <!-- HOTLINE AND SERCH -->
                 <div class="col-lg-4 col-md-4 hotline-search">
@@ -132,7 +146,7 @@
         <div class="container">
             <ul class="nav navbar-nav navbar-left hidden-sm hidden-xs">
                 <li class="<?= $c == 'home' ? 'active' : '' ?>">
-                    <a href="/">Trang chủ</a>
+                    <a href="index.php">Trang chủ</a>
                 </li>
                 <li class="<?= $c == 'product' ? 'active' : '' ?>"><a href="?c=product">Sản phẩm </a></li>
                 <li class="<?= $a == 'return' ? 'active' : '' ?>"><a href="?c=policy&a=return">Chính sách đổi trả</a>
