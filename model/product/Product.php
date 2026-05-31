@@ -163,12 +163,18 @@ class Product
 
 	function setPrice($price)
 	{
+		if ($price < 0) {
+			throw new Exception("Giá không thể âm!");
+		}
 		$this->price = $price;
 		return $this;
 	}
 
 	function setDiscountPercentage($discount_percentage)
 	{
+		if ($discount_percentage < 0 || $discount_percentage > 100) {
+			throw new Exception("Phần trăm giảm giá phải từ 0 đến 100!");
+		}
 		$this->discount_percentage = $discount_percentage;
 		return $this;
 	}
@@ -199,6 +205,9 @@ class Product
 
 	function setInventoryQty($inventory_qty)
 	{
+		if ($inventory_qty < 0) {
+			throw new Exception("Số lượng tồn kho không thể âm!");
+		}
 		$this->inventory_qty = $inventory_qty;
 		return $this;
 	}

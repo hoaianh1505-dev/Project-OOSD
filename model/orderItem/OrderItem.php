@@ -46,11 +46,17 @@ class OrderItem
 	}
 
 	function setQty($qty){
+		if ($qty <= 0) {
+			throw new Exception("Số lượng sản phẩm phải lớn hơn 0!");
+		}
 		$this->qty = $qty;
 		return $this;
 	}
 
 	function setUnitPrice($unit_price){
+		if ($unit_price < 0) {
+			throw new Exception("Đơn giá không thể âm!");
+		}
 		$this->unit_price = $unit_price;
 		return $this;
 	}

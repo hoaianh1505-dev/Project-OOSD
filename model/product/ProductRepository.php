@@ -287,11 +287,12 @@ class ProductRepository extends BaseRepository
 		return false;
 	}
 
+	// lưu ý: bảo mật
 	function delete(Product $product)
 	{
 		// global $conn;
 		$id = $product->getId();
-		$sql = "DELETE FROM product WHERE id=$id";
+		$sql = "DELETE FROM product WHERE id=$id";//
 		if ($this->conn->query($sql) === TRUE) {
 			return true;
 		}
